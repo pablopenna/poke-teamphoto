@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { MainClient } from 'pokenode-ts';
 
-const apiUrlTemplate = 'https://pokeapi.co/api/v2/pokemon/{id}';
-
 const pokeApi = new MainClient();
 
 export const fetchAllPokes = async () => {

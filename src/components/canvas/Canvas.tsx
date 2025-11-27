@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as fabric from 'fabric';
 import { FabricText } from 'fabric';
 
@@ -9,9 +9,6 @@ interface CanvasProps {
   canvasRef: React.RefObject<fabric.Canvas | null>;
   dimensions: Dimensions;
 }
-
-const MARGIN_PX = 20;
-const DEFAULT_ASPECT_RATIO = 16 / 9;
 
 export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
   const canvasEl = useRef<HTMLCanvasElement>(null);
@@ -61,6 +58,7 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
       .flat()
       .filter((e) => e != null);
     elementsToFix.forEach((e) => resizeHack(e as HTMLElement, dimensions));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dimensions]);
 
   // Manually update size in the style property of the element

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { fetchPokeSprite } from '../api';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';

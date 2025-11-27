@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as fabric from 'fabric';
 
-import logo from './logo.svg';
 import './App.css';
 import { fetchAllPokes, fetchPokesInGen } from './api';
 import { Canvas, CanvasDimensionsSelector } from './components/canvas';

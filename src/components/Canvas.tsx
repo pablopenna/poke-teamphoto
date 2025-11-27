@@ -13,7 +13,7 @@ const MARGIN_PX = 20;
 
 export const Canvas: React.FC<CanvasProps> = ({ canvasRef, aspectRatio }) => {
     const getWidth = () => {
-        return window.screen.availWidth - MARGIN_PX;
+        return window.innerWidth - MARGIN_PX;
     }
 
     const getHeight = () => {

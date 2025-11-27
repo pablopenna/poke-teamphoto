@@ -5,6 +5,16 @@ const apiUrlTemplate = 'https://pokeapi.co/api/v2/pokemon/{id}';
 
 const pokeApi = new MainClient();
 
+export const fetchAllPokes = async () => {
+  const data = await pokeApi.pokemon.listPokemons(0, 100);
+  return data;
+}
+
+export const fetchPokesInGen = async (generation: number) => {
+  const gen = await pokeApi.game.getGenerationById(generation);
+  return gen.pokemon_species;
+}
+
 export const fetchPokeSprite = async (pokeId: string) => {
   let sprite;
 

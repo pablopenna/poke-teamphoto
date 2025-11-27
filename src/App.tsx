@@ -3,7 +3,7 @@ import * as fabric from 'fabric';
 
 import logo from './logo.svg';
 import './App.css';
-import { Canvas, SpriteFetcher } from './components';
+import { Canvas, SpriteFetcher, VBox } from './components';
 import { fetchAllPokes, fetchPokesInGen } from './api';
 
 function App() {
@@ -20,8 +20,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <VBox className='gapped'>
           <Canvas canvasRef={canvasRef} aspectRatio={16/9}/>
           <SpriteFetcher canvasRef={canvasRef}/>
+        </VBox>
       </header>
     </div>
   );

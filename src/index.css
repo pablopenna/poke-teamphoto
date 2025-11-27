@@ -30,3 +30,27 @@ code {
 .App-link {
   color: #61dafb;
 }
+
+.flexbox {
+  display: flex;
+}
+
+.vbox {
+  flex-direction: column;
+}
+
+.hbox {
+  flex-direction: row;
+}
+
+.gapped {
+  gap: 1rem;
+}
+
+.slightly-gapped {
+  gap: 0.5rem;
+}
+
+.micro-gapped {
+  gap: 0.1rem;
+}

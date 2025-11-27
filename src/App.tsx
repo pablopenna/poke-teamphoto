@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <Canvas canvasRef={canvasRef}/>
+          <Canvas canvasRef={canvasRef} aspectRatio={16/9}/>
           <SpriteFetcher canvasRef={canvasRef}/>
       </header>
     </div>

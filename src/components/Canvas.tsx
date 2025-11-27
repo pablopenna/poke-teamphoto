@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as fabric from 'fabric';
 import { FabricText } from 'fabric';
 
@@ -6,17 +6,54 @@ import './Canvas.css';
 
 interface CanvasProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
+    aspectRatio: number; // e.g., 16/9
 }
 
-export const Canvas: React.FC<CanvasProps> = ({ canvasRef }) => {
+const MARGIN_PX = 20;
+
+export const Canvas: React.FC<CanvasProps> = ({ canvasRef, aspectRatio }) => {
+    const getWidth = () => {
+        return window.screen.availWidth - MARGIN_PX;
+    }
+
+    const getHeight = () => {
+        return getWidth() / aspectRatio;
+    }
+
+    const [dimensions, setDimensions] = useState({
+        width: getWidth(),
+        height: getHeight(),
+    });
+
     const canvasEl = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
-        const options = {};
+        const handleResize = () => {
+            const canvas = canvasRef.current;
+            if(!canvas) {
+                return;
+            }
+
+            canvas.setDimensions({
+                width: getWidth(),
+                height: getHeight(),
+            })
+            canvas.calcOffset();
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup on unmount
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [aspectRatio]);
+
+    // Create the fabric canvas and objects
+    useEffect(() => {
         const canvas = new fabric.Canvas(canvasEl.current || undefined);
         canvasRef.current = canvas; // Expose the canvas instance via the ref
 
-        // Create a rectangle and add it to the canvas
         const rect = new fabric.Rect({
             left: 100,
             top: 100,
@@ -27,8 +64,7 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef }) => {
             strokeWidth: 2
         });
 
-        // Create text and add it to the canvas
-        const text = new FabricText( 'Sample Text', {
+        const text = new FabricText('Sample Text', {
             left: 150,
             top: 250,
             fontSize: 20,
@@ -37,11 +73,17 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef }) => {
 
         canvas.add(rect, text);
 
-        // Make the fabric.Canvas instance available to your app      
         return () => {
-            canvas.dispose(); // Cleanup
+            canvas.dispose();
         };
-    }, []);
+    }, [canvasRef]);
 
-    return (<canvas width="1000" height="400" ref={canvasEl} className="Canvas"/>);
+    return (
+        <canvas
+            ref={canvasEl}
+            width={dimensions.width}
+            height={dimensions.height}
+            className="Canvas"
+        />
+    );
 }

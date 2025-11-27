@@ -9,7 +9,6 @@ import { SpriteFetcher, VBox } from './components';
 import { Dimensions } from './types';
 
 function App() {
-
   const canvasRef = useRef<fabric.Canvas | null>(null); // Create a ref for the canvas
   const [dimensions, setDimensions] = useState<Dimensions>({
     width: 400,
@@ -17,19 +16,19 @@ function App() {
   });
 
   useEffect(() => {
-    fetchAllPokes().then(data => console.log(data));;
-    fetchPokesInGen(1).then(data => console.log(data));
-    fetchPokesInGen(2).then(data => console.log(data));;
-    fetchPokesInGen(3).then(data => console.log(data));;
+    fetchAllPokes().then((data) => console.log(data));
+    fetchPokesInGen(1).then((data) => console.log(data));
+    fetchPokesInGen(2).then((data) => console.log(data));
+    fetchPokesInGen(3).then((data) => console.log(data));
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <VBox className='gapped'>
-          <Canvas canvasRef={canvasRef} dimensions={dimensions}/>
-          <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions}/>  
-          <SpriteFetcher canvasRef={canvasRef}/>
+        <VBox className="gapped">
+          <Canvas canvasRef={canvasRef} dimensions={dimensions} />
+          <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
+          <SpriteFetcher canvasRef={canvasRef} />
         </VBox>
       </header>
     </div>

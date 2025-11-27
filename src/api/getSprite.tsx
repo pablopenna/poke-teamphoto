@@ -8,22 +8,22 @@ const pokeApi = new MainClient();
 export const fetchAllPokes = async () => {
   const data = await pokeApi.pokemon.listPokemons(0, 100);
   return data;
-}
+};
 
 export const fetchPokesInGen = async (generation: number) => {
   const gen = await pokeApi.game.getGenerationById(generation);
   return gen.pokemon_species;
-}
+};
 
 export const fetchPokeSprite = async (pokeId: string) => {
   let sprite;
 
   const data = await pokeApi.pokemon.getPokemonByName(pokeId);
   const spriteUrl = data.sprites.front_default!;
-  sprite = await getImageAsBase64(spriteUrl)
+  sprite = await getImageAsBase64(spriteUrl);
 
   return sprite;
-}
+};
 
 // Function to convert an image URL to Base64
 const getImageAsBase64 = async (imageUrl: string): Promise<string> => {

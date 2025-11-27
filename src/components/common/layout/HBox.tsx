@@ -1,11 +1,5 @@
-import { Flexbox } from ".";
+import { Flexbox } from '.';
 
 export const HBox: React.FC<any> = (props) => {
-    return (
-        <Flexbox 
-            className={(props.className || "") + " hbox"}
-        >
-            {props.children}
-        </Flexbox>
-    );
-}
+  return <Flexbox className={(props.className || '') + ' hbox'}>{props.children}</Flexbox>;
+};

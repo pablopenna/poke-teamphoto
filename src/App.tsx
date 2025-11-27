@@ -1,14 +1,19 @@
 import React, { useEffect, useRef } from 'react';
+import * as fabric from 'fabric';
+
 import logo from './logo.svg';
 import './App.css';
-import { Canvas } from './components';
+import { Canvas, SpriteFetcher } from './components';
 
 function App() {
+
+  const canvasRef = useRef<fabric.Canvas | null>(null); // Create a ref for the canvas
 
   return (
     <div className="App">
       <header className="App-header">
-          <Canvas initialText="awenao"/>
+          <Canvas canvasRef={canvasRef}/>
+          <SpriteFetcher canvasRef={canvasRef}/>
       </header>
     </div>
   );

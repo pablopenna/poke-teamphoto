@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { fetchData } from '../api';
+import { fetchPokeSprite } from '../api';
 import * as fabric from 'fabric';
 
 interface SpriteFetcherProps {
@@ -11,7 +11,7 @@ export const SpriteFetcher: React.FC<SpriteFetcherProps> = ({
 }) => {
 
     const getPokeSprite = (id: string) => {
-        fetchData(id).then(onSpriteDataFetched);
+        fetchPokeSprite(id).then(onSpriteDataFetched);
     }
 
     const onSpriteDataFetched = (sprite: string | undefined) => {
@@ -29,5 +29,5 @@ export const SpriteFetcher: React.FC<SpriteFetcherProps> = ({
         });
     }
 
-    return (<button onClick={() => getPokeSprite("1")}>Fetch!</button>);
+    return (<button onClick={() => getPokeSprite("ditto")}>Fetch!</button>);
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as fabric from 'fabric';
 
 import logo from './logo.svg';

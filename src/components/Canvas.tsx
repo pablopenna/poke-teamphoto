@@ -12,7 +12,6 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef }) => {
     const canvasEl = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
-        console.log("creating canvas");
         const options = {};
         const canvas = new fabric.Canvas(canvasEl.current || undefined);
         canvasRef.current = canvas; // Expose the canvas instance via the ref

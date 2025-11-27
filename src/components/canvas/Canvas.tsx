@@ -3,53 +3,21 @@ import * as fabric from 'fabric';
 import { FabricText } from 'fabric';
 
 import './Canvas.css';
+import { Dimensions } from '../../types';
 
 interface CanvasProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
-    aspectRatio: number; // e.g., 16/9
+    dimensions: Dimensions
 }
 
 const MARGIN_PX = 20;
+const DEFAULT_ASPECT_RATIO = 16/9;
 
-export const Canvas: React.FC<CanvasProps> = ({ canvasRef, aspectRatio }) => {
-    const getWidth = () => {
-        return window.innerWidth - MARGIN_PX;
-    }
-
-    const getHeight = () => {
-        return getWidth() / aspectRatio;
-    }
-
-    const [dimensions, setDimensions] = useState({
-        width: getWidth(),
-        height: getHeight(),
-    });
+export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
 
     const canvasEl = useRef<HTMLCanvasElement>(null);
 
-    useEffect(() => {
-        const handleResize = () => {
-            const canvas = canvasRef.current;
-            if(!canvas) {
-                return;
-            }
-
-            canvas.setDimensions({
-                width: getWidth(),
-                height: getHeight(),
-            })
-            canvas.calcOffset();
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup on unmount
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [aspectRatio]);
-
-    // Create the fabric canvas and objects
+    // Init Canvas
     useEffect(() => {
         const canvas = new fabric.Canvas(canvasEl.current || undefined);
         canvasRef.current = canvas; // Expose the canvas instance via the ref
@@ -78,12 +46,34 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef, aspectRatio }) => {
         };
     }, [canvasRef]);
 
+    // handle resize
+    useEffect(() => {
+        const canvas = canvasRef.current
+        if(!canvas) return;
+
+        canvas.setDimensions(dimensions);
+        canvas.calcOffset();
+
+        // HACK: the DOM properties are updated but the style keeps the old size, preventing from resizing
+        const elementsToFix = [ 
+            Array.from(document.getElementsByClassName("canvas-container")),
+            Array.from(document.getElementsByClassName("PokeCanvas")),
+        ].flat().filter(e => e != null);
+        elementsToFix.forEach(e => resizeHack(e as HTMLElement, dimensions));
+    }, [dimensions]);
+
+    // Manually update size in the style property of the element
+    const resizeHack = (element: HTMLElement, dimensions: Dimensions) => {
+        element.style.width = dimensions.width + "px";
+        element.style.height = dimensions.height + "px";
+    }
+    
     return (
         <canvas
             ref={canvasEl}
             width={dimensions.width}
             height={dimensions.height}
-            className="Canvas"
+            className="Canvas PokeCanvas"
         />
     );
 }

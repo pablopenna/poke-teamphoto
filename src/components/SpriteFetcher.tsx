@@ -3,10 +3,6 @@ import { fetchPokeSprite } from '../api';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 
-export default function ButtonUsage() {
-  return <Button variant="contained">Hello world</Button>;
-}
-
 interface SpriteFetcherProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
 }

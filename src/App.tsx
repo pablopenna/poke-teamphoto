@@ -4,7 +4,7 @@ import * as fabric from 'fabric';
 import './App.css';
 import { fetchAllPokes, fetchPokesInGen } from './api';
 import { Canvas, CanvasDimensionsSelector } from './components/canvas';
-import { SpriteFetcher, VBox } from './components';
+import { HBox, SpriteFetcher, VBox } from './components';
 import { Dimensions } from './types';
 
 function App() {
@@ -22,14 +22,18 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <VBox className="gapped align-center">
-          <Canvas canvasRef={canvasRef} dimensions={dimensions} />
-          <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
-          <SpriteFetcher canvasRef={canvasRef} />
-        </VBox>
-      </header>
+    <div className="App App-content">
+      <HBox className="gapped align-center">
+        <h1 className='App-title'>
+          PokéTeam Photo
+        </h1>
+      </HBox>
+      <VBox className="gapped align-center">
+        <Canvas canvasRef={canvasRef} dimensions={dimensions} />
+        <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
+        <SpriteFetcher canvasRef={canvasRef} />
+      </VBox>
+
     </div>
   );
 }

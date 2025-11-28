@@ -16,6 +16,7 @@ export const BringBackwards: React.FC<BringBackwardsProps> = ({
 
         const images = canvas.getActiveObjects();
         images.forEach(img => canvas.sendObjectToBack(img));
+        canvas.renderAll();
     }
 
     return (

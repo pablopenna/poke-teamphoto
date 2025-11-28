@@ -13,19 +13,16 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
     canvasRef,
 }) => {
 
-    const onAddBackground = () => {
+    const onSetAsBackground = async () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        fabric.FabricImage.fromURL(backgroundImage).then((img) => {
-            img.scale(0.4);
-            img.set({
-                angle: 0,
-            });
-            
-            canvas.backgroundImage = img;
-            canvas.renderAll();
-        });
+        const image = canvas.getActiveObject();
+        if(!image) return;
+        
+        canvas.backgroundImage = await image.clone(); // Need to clone the instance, cannot use the existing one (does not work)
+        canvas.remove(image);
+        canvas.renderAll();
     }
 
     const onRemoveBackground = () => {
@@ -38,8 +35,8 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
 
     return (
         <HBox className="slightly-gapped">
-            <Button onClick={onAddBackground}>
-                Set background
+            <Button onClick={onSetAsBackground}>
+                Set as background
             </Button>
             <Button onClick={onRemoveBackground}>
                 Remove background

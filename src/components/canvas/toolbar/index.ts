@@ -1,5 +1,6 @@
 export * from './BringBackward';
 export * from './BringForward';
+export * from './Duplicate';
 export * from './FlipImage';
 export * from './ManageBackground';
 export * from './RemoveImage';

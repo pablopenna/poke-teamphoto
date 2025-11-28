@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as fabric from 'fabric';
 
-import './App.css';
 import { fetchAllPokes, fetchPokesInGen } from './api';
 import { HBox, SpriteFetcher, VBox, Canvas, CanvasDimensionsSelector, CanvasToolbar } from './components';
 import { Dimensions } from './types';
+
+import * as logo from './preloaded-images/pokeball_v2.png';
+import './App.css';
 
 function App() {
   const canvasRef = useRef<fabric.Canvas | null>(null); // Create a ref for the canvas
@@ -23,6 +25,7 @@ function App() {
   return (
     <div className="App App-content">
       <HBox className="gapped align-center">
+        <img src={logo.default} alt="pokeball" className='App-logo'/>
         <h1 className='App-title'>
           PokéTeam Photo
         </h1>

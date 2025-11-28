@@ -1,4 +1,5 @@
 .App-logo {
+  max-height: 100px;
   height: 40vmin;
   pointer-events: none;
 }

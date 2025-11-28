@@ -1,7 +1,7 @@
 import React from 'react';
 import * as fabric from 'fabric';
 import { VBox } from '../../common/layout';
-import { ResetSize, BringForwards, FlipImage, ManageBackground, RemoveImage, Duplicate, BringBackwards } from '.';
+import { ResetSize, BringForwards, FlipImage, ManageBackground, RemoveImage, Duplicate, BringBackwards, SaveAsPng } from '.';
 
 interface CanvasToolbarProps {
   canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -19,6 +19,7 @@ export const CanvasToolbar: React.FC<CanvasToolbarProps> = ({
       <ResetSize canvasRef={canvasRef}/>
       <RemoveImage canvasRef={canvasRef}/>
       <Duplicate canvasRef={canvasRef}/>
+      <SaveAsPng canvasRef={canvasRef}/>
     </VBox>
   );
 };

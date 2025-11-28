@@ -44,7 +44,6 @@ export const SpriteFetcher: React.FC<SpriteFetcherProps> = ({ canvasRef }) => {
     <HBox className="slightly-gapped">
       <TextField 
         label="Name or Dex no." 
-        value={pokeId} 
         onChange={(event) => {
           const value = event.target.value;
           setPokeId(value);

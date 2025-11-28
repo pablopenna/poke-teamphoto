@@ -3,8 +3,7 @@ import * as fabric from 'fabric';
 
 import './App.css';
 import { fetchAllPokes, fetchPokesInGen } from './api';
-import { Canvas, CanvasDimensionsSelector } from './components/canvas';
-import { HBox, SpriteFetcher, VBox } from './components';
+import { HBox, SpriteFetcher, VBox, Canvas, CanvasDimensionsSelector, CanvasToolbar } from './components';
 import { Dimensions } from './types';
 
 function App() {
@@ -29,7 +28,10 @@ function App() {
         </h1>
       </HBox>
       <VBox className="gapped align-center">
-        <Canvas canvasRef={canvasRef} dimensions={dimensions} />
+        <HBox className="slightly-gapped">
+          <Canvas canvasRef={canvasRef} dimensions={dimensions} />
+          <CanvasToolbar canvasRef={canvasRef}/>
+        </HBox>
         <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
         <SpriteFetcher canvasRef={canvasRef} />
       </VBox>

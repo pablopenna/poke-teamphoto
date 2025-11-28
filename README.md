@@ -2,20 +2,24 @@
 
 ## Usage
 
-* Install dependencies
-```sh
-npm install
-```
+* Install dependencies:
+  
+  ```sh
+  npm install
+  ```
 
-* Run locally (debug)
-```sh
-npm start
-```
+* Run locally (debug):
+    ```sh
+    npm start
+    ```
 
-* deploy to github-pages
-```sh
-npm run deploy
-```
+* Deploy to github-pages: should be done automatically on pushing to the repo thanks to the [`deploy workflow`](./.github/workflows/deploy.yml).
+
+  To do it manually, run:
+
+    ```sh
+    npm run deploy
+    ```
 
 ## Sources used for fetching sprites
 

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import icon from 'icons/delete.png';
 import { Tooltip } from '@mui/material';
+import { useUserOptions } from '../../../contexts';
 
 interface RemoveImageProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -12,6 +13,7 @@ interface RemoveImageProps {
 export const RemoveImage: React.FC<RemoveImageProps> = ({
     canvasRef,
 }) => {
+    const { userOptions } = useUserOptions();
 
     const onRemove = () => {
         const canvas = canvasRef.current;
@@ -27,7 +29,7 @@ export const RemoveImage: React.FC<RemoveImageProps> = ({
     return (
         <Tooltip title={text}>
             <Button onClick={onRemove} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
-                {text}
+                {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>
     );

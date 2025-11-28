@@ -7,6 +7,7 @@ import { Dimensions } from './types';
 
 import * as logo from './preloaded-images/pokeball_v2.png';
 import './App.css';
+import { UserOptionsProvider } from './contexts/user-options-context';
 
 function App() {
   const canvasRef = useRef<fabric.Canvas | null>(null); // Create a ref for the canvas
@@ -23,23 +24,24 @@ function App() {
   }, []);
 
   return (
-    <div className="App App-content">
-      <HBox className="gapped align-center">
-        <img src={logo.default} alt="pokeball" className='App-logo'/>
-        <h1 className='App-title'>
-          PokéTeam Photo
-        </h1>
-      </HBox>
-      <VBox className="gapped align-center">
-        <HBox className="slightly-gapped">
-          <Canvas canvasRef={canvasRef} dimensions={dimensions} />
-          <CanvasToolbar canvasRef={canvasRef}/>
+    <UserOptionsProvider>
+      <div className="App App-content">
+        <HBox className="gapped align-center">
+          <img src={logo.default} alt="pokeball" className='App-logo' />
+          <h1 className='App-title'>
+            PokéTeam Photo
+          </h1>
         </HBox>
-        <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
-        <SpriteFetcher canvasRef={canvasRef} />
-      </VBox>
-
-    </div>
+        <VBox className="gapped align-center">
+          <HBox className="slightly-gapped">
+            <Canvas canvasRef={canvasRef} dimensions={dimensions} />
+            <CanvasToolbar canvasRef={canvasRef} />
+          </HBox>
+          <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
+          <SpriteFetcher canvasRef={canvasRef} />
+        </VBox>
+      </div>
+    </UserOptionsProvider>
   );
 }
 

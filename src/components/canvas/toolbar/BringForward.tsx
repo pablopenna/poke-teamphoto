@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import icon from 'icons/forwards_3.png';
 import { Tooltip } from '@mui/material';
+import { useUserOptions } from '../../../contexts';
 
 interface BringForwardsProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -12,6 +13,8 @@ interface BringForwardsProps {
 export const BringForwards: React.FC<BringForwardsProps> = ({
     canvasRef,
 }) => {
+
+    const { userOptions } = useUserOptions();
 
     const onBringForward = () => {
         const canvas = canvasRef.current;
@@ -26,7 +29,7 @@ export const BringForwards: React.FC<BringForwardsProps> = ({
     return (
         <Tooltip title={text}>
             <Button onClick={onBringForward} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
-                {text}
+                {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>
     );

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import icon from 'icons/backwards_3.png';
 import { Tooltip } from '@mui/material';
+import { useUserOptions } from '../../../contexts';
 
 interface BringBackwardsProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -12,6 +13,8 @@ interface BringBackwardsProps {
 export const BringBackwards: React.FC<BringBackwardsProps> = ({
     canvasRef,
 }) => {
+
+    const { userOptions } = useUserOptions();
 
     const onBringBackwards = () => {
         const canvas = canvasRef.current;
@@ -27,7 +30,7 @@ export const BringBackwards: React.FC<BringBackwardsProps> = ({
     return (
         <Tooltip title={text}>
             <Button onClick={onBringBackwards} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
-                {text}
+                {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>
     );

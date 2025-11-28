@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import icon from 'icons/reset.png';
 import { Tooltip } from '@mui/material';
+import { useUserOptions } from '../../../contexts';
 
 interface ResetSizeProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -12,6 +13,7 @@ interface ResetSizeProps {
 export const ResetSize: React.FC<ResetSizeProps> = ({
     canvasRef,
 }) => {
+    const { userOptions } = useUserOptions();
 
     const onResetSize = () => {
         const canvas = canvasRef.current;
@@ -27,7 +29,7 @@ export const ResetSize: React.FC<ResetSizeProps> = ({
     return (
         <Tooltip title={text}>
             <Button onClick={onResetSize} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
-                {text}
+                {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>
     );

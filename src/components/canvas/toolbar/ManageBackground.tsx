@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import set_bk_icon from 'icons/set_background.png';
 import clear_bk_icon from 'icons/remove_background.png';
 import { ButtonGroup, Tooltip } from '@mui/material';
+import { useUserOptions } from '../../../contexts';
 
 interface ManageBackgroundProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -13,6 +14,8 @@ interface ManageBackgroundProps {
 export const ManageBackground: React.FC<ManageBackgroundProps> = ({
     canvasRef,
 }) => {
+
+    const { userOptions } = useUserOptions();
 
     const onSetAsBackground = async () => {
         const canvas = canvasRef.current;
@@ -41,12 +44,12 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
         <ButtonGroup>
             <Tooltip title={add_bk_text}>
                 <Button onClick={onSetAsBackground} variant="contained" startIcon={<img src={set_bk_icon} alt={add_bk_text} className="toolbar-icon" />}>
-                    {add_bk_text}
+                    {userOptions.buttonStyle === 'icon-and-text' && add_bk_text}
                 </Button>
             </Tooltip>
             <Tooltip title={remove_bk_text}>
                 <Button onClick={onRemoveBackground} variant="contained" startIcon={<img src={clear_bk_icon} alt={remove_bk_text} className="toolbar-icon" />}>
-                    {remove_bk_text}
+                    {userOptions.buttonStyle === 'icon-and-text' && remove_bk_text}
                 </Button>
             </Tooltip>
         </ButtonGroup>

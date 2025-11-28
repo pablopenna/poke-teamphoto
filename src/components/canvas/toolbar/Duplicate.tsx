@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import icon from 'icons/clone.png';
 import { Tooltip } from '@mui/material';
+import { useUserOptions } from '../../../contexts';
 
 interface DuplicateProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -15,6 +16,8 @@ export const Duplicate: React.FC<DuplicateProps> = ({
 
     const OFFSET_X = 10;
     const OFFSET_Y = 10;
+    
+    const { userOptions } = useUserOptions();
 
     const onDuplicate = async () => {
         const canvas = canvasRef.current;
@@ -36,7 +39,7 @@ export const Duplicate: React.FC<DuplicateProps> = ({
     return (
         <Tooltip title={text}>
             <Button onClick={onDuplicate} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
-                {text}
+                {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>
     );

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import icon from 'icons/save.png';
 import { Tooltip } from '@mui/material';
+import { useUserOptions } from '../../../contexts';
 
 interface SaveAsPngProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -12,6 +13,7 @@ interface SaveAsPngProps {
 export const SaveAsPng: React.FC<SaveAsPngProps> = ({
     canvasRef,
 }) => {
+    const { userOptions } = useUserOptions();
 
     const onSave = () => {
         const canvas = canvasRef.current;
@@ -28,7 +30,7 @@ export const SaveAsPng: React.FC<SaveAsPngProps> = ({
     return (
         <Tooltip title={text}>
             <Button onClick={onSave} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
-                {text}
+                {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>
     );

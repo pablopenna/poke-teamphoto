@@ -3,6 +3,7 @@ import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 
 import icon from 'icons/backwards_3.png';
+import { Tooltip } from '@mui/material';
 
 interface BringBackwardsProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -21,9 +22,13 @@ export const BringBackwards: React.FC<BringBackwardsProps> = ({
         canvas.renderAll();
     }
 
+    const text = "Bring Backwards";
+
     return (
-        <Button onClick={onBringBackwards} variant="contained" startIcon={<img src={icon} alt="Bring Backwards" className="toolbar-icon"/>}>
-            Bring Backwards
-        </Button>
+        <Tooltip title={text}>
+            <Button onClick={onBringBackwards} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
+                {text}
+            </Button>
+        </Tooltip>
     );
 };

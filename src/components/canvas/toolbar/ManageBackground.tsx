@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { HBox } from '../../common/layout';
 import set_bk_icon from 'icons/forwards_3.png';
 import clear_bk_icon from 'icons/forwards_3.png';
+import { Tooltip } from '@mui/material';
 
 interface ManageBackgroundProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -19,8 +20,8 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
         if (!canvas) return;
 
         const image = canvas.getActiveObject();
-        if(!image) return;
-        
+        if (!image) return;
+
         canvas.backgroundImage = await image.clone(); // Need to clone the instance, cannot use the existing one (does not work)
         canvas.remove(image);
         canvas.renderAll();
@@ -34,14 +35,21 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
         canvas.renderAll();
     }
 
+    const add_bk_text = "Set as background";
+    const remove_bk_text = "Remove background";
+
     return (
         <HBox className="slightly-gapped">
-            <Button onClick={onSetAsBackground} variant="contained" startIcon={<img src={set_bk_icon} alt="Set as background" className="toolbar-icon"/>}>
-                Set as background
-            </Button>
-            <Button onClick={onRemoveBackground} variant="contained" startIcon={<img src={clear_bk_icon} alt="Remove background" className="toolbar-icon"/>}>
-                Remove background
-            </Button>
+            <Tooltip title={add_bk_text}>
+                <Button onClick={onSetAsBackground} variant="contained" startIcon={<img src={set_bk_icon} alt={add_bk_text} className="toolbar-icon" />}>
+                    {add_bk_text}
+                </Button>
+            </Tooltip>
+            <Tooltip title={remove_bk_text}>
+                <Button onClick={onRemoveBackground} variant="contained" startIcon={<img src={clear_bk_icon} alt={remove_bk_text} className="toolbar-icon" />}>
+                    {remove_bk_text}
+                </Button>
+            </Tooltip>
         </HBox>
     );
 };

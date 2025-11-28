@@ -3,6 +3,7 @@ import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 
 import icon from 'icons/clone.png';
+import { Tooltip } from '@mui/material';
 
 interface DuplicateProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -28,12 +29,15 @@ export const Duplicate: React.FC<DuplicateProps> = ({
             });
             canvas.add(newImg);
         });
-        // canvas.renderAll();
     }
 
+    const text = "Duplicate";
+
     return (
-        <Button onClick={onDuplicate} variant="contained" startIcon={<img src={icon} alt="Duplicate" className="toolbar-icon"/>}>
-            Duplicate
-        </Button>
+        <Tooltip title={text}>
+            <Button onClick={onDuplicate} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
+                {text}
+            </Button>
+        </Tooltip>
     );
 };

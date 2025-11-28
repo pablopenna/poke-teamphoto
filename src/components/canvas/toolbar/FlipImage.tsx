@@ -5,6 +5,7 @@ import { HBox } from '../../common/layout';
 
 import icon_flip_x from 'icons/flip_x.png';
 import icon_flip_y from 'icons/flip_y.png';
+import { Tooltip } from '@mui/material';
 
 interface FlipImageProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -32,14 +33,21 @@ export const FlipImage: React.FC<FlipImageProps> = ({
         canvas.renderAll();
     }
 
+    const flip_x_text = "Flip X";
+    const flip_y_text = "Flip Y";
+
     return (
         <HBox className="slightly-gapped">
-            <Button onClick={onFlipX} variant="contained" startIcon={<img src={icon_flip_x} alt="flip x" className="toolbar-icon"/>}>
-                Flip X
-            </Button>
-            <Button onClick={onFlipY} variant="contained" startIcon={<img src={icon_flip_y} alt="flip y" className="toolbar-icon"/>}>
-                Flip Y
-            </Button>
+            <Tooltip title={flip_x_text}>
+                <Button onClick={onFlipX} variant="contained" startIcon={<img src={icon_flip_x} alt={flip_x_text} className="toolbar-icon" />}>
+                    {flip_x_text}
+                </Button>
+            </Tooltip>
+            <Tooltip title={flip_y_text}>
+                <Button onClick={onFlipY} variant="contained" startIcon={<img src={icon_flip_y} alt={flip_y_text} className="toolbar-icon" />}>
+                    {flip_y_text}
+                </Button>
+            </Tooltip>
         </HBox>
     );
 };

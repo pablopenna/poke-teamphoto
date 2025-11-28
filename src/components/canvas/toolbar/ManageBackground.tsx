@@ -3,7 +3,6 @@ import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 
 import { HBox } from '../../common/layout';
-import backgroundImage from '../../../preloaded-images/trainer_card_placeholder_1.png';
 
 interface ManageBackgroundProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;

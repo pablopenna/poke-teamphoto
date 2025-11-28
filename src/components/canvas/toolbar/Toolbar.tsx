@@ -3,6 +3,7 @@ import * as fabric from 'fabric';
 import { VBox } from '../../common/layout';
 import { BringForwards } from './BringForward';
 import { BringBackwards } from './BringBackward';
+import { ManageBackground } from './ManageBackground';
 
 interface CanvasToolbarProps {
   canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -15,6 +16,7 @@ export const CanvasToolbar: React.FC<CanvasToolbarProps> = ({
     <VBox className="slightly-gapped">
       <BringForwards canvasRef={canvasRef}/>
       <BringBackwards canvasRef={canvasRef}/>
+      <ManageBackground canvasRef={canvasRef}/>
     </VBox>
   );
 };

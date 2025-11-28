@@ -37,18 +37,6 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
 
     canvas.add(rect, text);
 
-    const rect2 = new fabric.Rect({
-      left: 0,
-      top: 0,
-      width: 500,
-      height: 500,
-      fill: 'green',
-      stroke: 'black',
-      strokeWidth: 2,
-    });
-
-    canvas.backgroundImage = rect2;
-
     return () => {
       canvas.dispose();
     };

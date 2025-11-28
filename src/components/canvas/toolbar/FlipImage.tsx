@@ -3,6 +3,9 @@ import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 import { HBox } from '../../common/layout';
 
+import icon_flip_x from 'icons/flip_x.png';
+import icon_flip_y from 'icons/flip_y.png';
+
 interface FlipImageProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
 }
@@ -31,10 +34,10 @@ export const FlipImage: React.FC<FlipImageProps> = ({
 
     return (
         <HBox className="slightly-gapped">
-            <Button onClick={onFlipX}>
+            <Button onClick={onFlipX} variant="contained" startIcon={<img src={icon_flip_x} alt="flip x" className="toolbar-icon"/>}>
                 Flip X
             </Button>
-            <Button onClick={onFlipY}>
+            <Button onClick={onFlipY} variant="contained" startIcon={<img src={icon_flip_y} alt="flip y" className="toolbar-icon"/>}>
                 Flip Y
             </Button>
         </HBox>

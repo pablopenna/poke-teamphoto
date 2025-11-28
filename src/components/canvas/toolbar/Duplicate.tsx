@@ -2,6 +2,8 @@ import React from 'react';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 
+import icon from 'icons/clone.png';
+
 interface DuplicateProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
 }
@@ -30,7 +32,7 @@ export const Duplicate: React.FC<DuplicateProps> = ({
     }
 
     return (
-        <Button onClick={onDuplicate}>
+        <Button onClick={onDuplicate} variant="contained" startIcon={<img src={icon} alt="Duplicate" className="toolbar-icon"/>}>
             Duplicate
         </Button>
     );

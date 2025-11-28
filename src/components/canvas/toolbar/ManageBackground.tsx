@@ -3,6 +3,8 @@ import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 
 import { HBox } from '../../common/layout';
+import set_bk_icon from 'icons/forwards_3.png';
+import clear_bk_icon from 'icons/forwards_3.png';
 
 interface ManageBackgroundProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -34,10 +36,10 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
 
     return (
         <HBox className="slightly-gapped">
-            <Button onClick={onSetAsBackground}>
+            <Button onClick={onSetAsBackground} variant="contained" startIcon={<img src={set_bk_icon} alt="Set as background" className="toolbar-icon"/>}>
                 Set as background
             </Button>
-            <Button onClick={onRemoveBackground}>
+            <Button onClick={onRemoveBackground} variant="contained" startIcon={<img src={clear_bk_icon} alt="Remove background" className="toolbar-icon"/>}>
                 Remove background
             </Button>
         </HBox>

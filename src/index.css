@@ -54,3 +54,7 @@ code {
 .micro-gapped {
   gap: 0.1rem;
 }
+
+.align-center {
+  align-items: center;
+}

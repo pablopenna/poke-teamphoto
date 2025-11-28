@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <VBox className="gapped">
+        <VBox className="gapped align-center">
           <Canvas canvasRef={canvasRef} dimensions={dimensions} />
           <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
           <SpriteFetcher canvasRef={canvasRef} />

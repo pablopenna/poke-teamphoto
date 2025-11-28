@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import * as fabric from 'fabric';
-import { FabricText } from 'fabric';
 
-import './Canvas.css';
 import { Dimensions } from '../../types';
+import './Canvas.css';
+import charmanderPic from '../../preloaded-images/charmander.png'
 
 interface CanvasProps {
   canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -18,31 +18,38 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
     const canvas = new fabric.Canvas(canvasEl.current || undefined);
     canvasRef.current = canvas; // Expose the canvas instance via the ref
 
-    const rect = new fabric.Rect({
-      left: 100,
-      top: 100,
-      width: 200,
-      height: 100,
-      fill: 'red',
-      stroke: 'blue',
-      strokeWidth: 2,
-    });
+    // const rect = new fabric.Rect({
+    //   left: 100,
+    //   top: 100,
+    //   width: 200,
+    //   height: 100,
+    //   fill: 'red',
+    //   stroke: 'blue',
+    //   strokeWidth: 2,
+    // });
+    // const text = new fabric.FabricText('Sample Text', {
+    //   left: 150,
+    //   top: 250,
+    //   fontSize: 20,
+    //   fill: 'white',
+    // });
+    // canvas.add(rect, text);
 
-    const text = new FabricText('Sample Text', {
-      left: 150,
-      top: 250,
-      fontSize: 20,
-      fill: 'white',
+    // Sample initial image
+    fabric.FabricImage.fromURL(charmanderPic).then((img) => {
+      img.set({
+        left: 10,
+        top: 100,
+      });
+      canvas.add(img);
     });
-
-    canvas.add(rect, text);
 
     return () => {
       canvas.dispose();
     };
   }, [canvasRef]);
 
-  // handle resize
+  // Handle resize
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;

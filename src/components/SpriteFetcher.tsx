@@ -28,6 +28,7 @@ export const SpriteFetcher: React.FC<SpriteFetcherProps> = ({ canvasRef }) => {
     }
 
     fabric.FabricImage.fromURL(sprite).then((image) => {
+      image.imageSmoothing = false; // remove anti-aliasing as it does not look good on pixelart
       canvas.add(image);
     });
   };

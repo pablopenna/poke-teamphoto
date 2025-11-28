@@ -1,7 +1,9 @@
 import React from 'react';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
+
 import { HBox } from '../../common/layout';
+import backgroundImage from '../../../preloaded-images/trainer_card_placeholder_1.png';
 
 interface ManageBackgroundProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -15,16 +17,15 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const background = new fabric.Rect({
-            left: 0,
-            top: 0,
-            width: 1000,
-            height: 1000,
-            fill: 'green',
+        fabric.FabricImage.fromURL(backgroundImage).then((img) => {
+            img.scale(0.4);
+            img.set({
+                angle: 0,
+            });
+            
+            canvas.backgroundImage = img;
+            canvas.renderAll();
         });
-    
-        canvas.backgroundImage = background;
-        canvas.set("backgroundImage", background);
     }
 
     const onRemoveBackground = () => {
@@ -32,6 +33,7 @@ export const ManageBackground: React.FC<ManageBackgroundProps> = ({
         if (!canvas) return;
 
         canvas.backgroundImage = undefined;
+        canvas.renderAll();
     }
 
     return (

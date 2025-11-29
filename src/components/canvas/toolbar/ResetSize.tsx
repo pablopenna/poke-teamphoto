@@ -28,7 +28,7 @@ export const ResetSize: React.FC<ResetSizeProps> = ({
 
     return (
         <Tooltip title={text}>
-            <Button onClick={onResetSize} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
+            <Button onClick={onResetSize} variant="contained" className="toolbar-button" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
                 {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>

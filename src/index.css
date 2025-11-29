@@ -48,9 +48,31 @@ code {
   color: #61dafb;
 }
 
+.canvas-wrapper {
+  /* overflow: scroll;
+  max-width: 100vw;
+  max-height: 100vh; */
+  padding: 4px;
+}
+
+.canvas-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 125px; /* Grow, shrink, with minimum size */
+  min-width: 0; /* Important for flex item shrinking */
+}
+
 .toolbar-icon {
   max-width: 32px;
   max-height: 32px;
+}
+
+.toolbar-button {
+  flex: 1; /* Buttons grow to fill available space */
+  min-height: 44px;
+  padding: 8px 16px;
+  
 }
 
 .flexbox {
@@ -83,4 +105,12 @@ code {
 
 .align-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.fill-x {
+  width: 100%;
 }

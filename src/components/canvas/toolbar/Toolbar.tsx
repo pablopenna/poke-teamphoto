@@ -1,7 +1,7 @@
 import React from 'react';
 import * as fabric from 'fabric';
 import { Flexbox } from '../../common/layout';
-import { ResetSize, BringForwards, FlipImage, ManageBackground, RemoveImage, Duplicate, BringBackwards, SaveAsPng } from '.';
+import { ResetSize, BringForwards, RemoveImage, Duplicate, BringBackwards, SaveAsPng, FlipImageHorizontally, FlipImageVertically, BackgroundSet, BackgroundRemove } from '.';
 import { ButtonGroup } from '@mui/material';
 
 interface CanvasToolbarProps {
@@ -11,18 +11,24 @@ interface CanvasToolbarProps {
 export const CanvasToolbar: React.FC<CanvasToolbarProps> = ({
   canvasRef,
 }) => {
-   return (
-    <Flexbox className="slightly-gapped flex-wrap vbox">
-      <ButtonGroup>
-        <BringForwards canvasRef={canvasRef}/>
-        <BringBackwards canvasRef={canvasRef}/>
+  return (
+    <div className="canvas-toolbar">
+      <ButtonGroup variant="contained">
+        <BringForwards canvasRef={canvasRef} />
+        <BringBackwards canvasRef={canvasRef} />
       </ButtonGroup>
-      <ManageBackground canvasRef={canvasRef}/>
-      <FlipImage canvasRef={canvasRef}/>
-      <ResetSize canvasRef={canvasRef}/>
-      <RemoveImage canvasRef={canvasRef}/>
-      <Duplicate canvasRef={canvasRef}/>
-      <SaveAsPng canvasRef={canvasRef}/>
-    </Flexbox>
+      <ButtonGroup variant="contained">
+        <BackgroundSet canvasRef={canvasRef} />
+        <BackgroundRemove canvasRef={canvasRef} />
+      </ButtonGroup>
+      <ButtonGroup variant="contained">
+        <FlipImageHorizontally canvasRef={canvasRef} />
+        <FlipImageVertically canvasRef={canvasRef} />
+      </ButtonGroup>
+      <ResetSize canvasRef={canvasRef} />
+      <RemoveImage canvasRef={canvasRef} />
+      <Duplicate canvasRef={canvasRef} />
+      <SaveAsPng canvasRef={canvasRef} />
+    </div>
   );
 };

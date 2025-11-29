@@ -29,7 +29,7 @@ export const BringBackwards: React.FC<BringBackwardsProps> = ({
 
     return (
         <Tooltip title={text}>
-            <Button onClick={onBringBackwards} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
+            <Button onClick={onBringBackwards} variant="contained" className="toolbar-button" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
                 {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>

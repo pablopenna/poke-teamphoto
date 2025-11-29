@@ -29,7 +29,7 @@ export const SaveAsPng: React.FC<SaveAsPngProps> = ({
 
     return (
         <Tooltip title={text}>
-            <Button onClick={onSave} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
+            <Button onClick={onSave} variant="contained" className="toolbar-button" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
                 {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>

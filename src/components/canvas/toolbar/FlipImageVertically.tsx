@@ -2,34 +2,34 @@ import React from 'react';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 
-import icon from 'icons/delete.png';
+import icon_flip_y from 'icons/flip_y.png';
 import { Tooltip } from '@mui/material';
 import { useUserOptions } from '../../../contexts';
 
-interface RemoveImageProps {
+interface FlipImageProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
 }
 
-export const RemoveImage: React.FC<RemoveImageProps> = ({
+export const FlipImageVertically: React.FC<FlipImageProps> = ({
     canvasRef,
 }) => {
     const { userOptions } = useUserOptions();
 
-    const onRemove = () => {
+    const onFlipY = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         const images = canvas.getActiveObjects();
-        images.forEach(img => canvas.remove(img));
+        images.forEach(img => img.flipY = !img.flipY);
         canvas.renderAll();
     }
 
-    const text = "Remove";
+    const flip_y_text = "Flip Y";
 
     return (
-        <Tooltip title={text}>
-            <Button onClick={onRemove} variant="contained" className="toolbar-button" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
-                {userOptions.buttonStyle === 'icon-and-text' && text}
+        <Tooltip title={flip_y_text}>
+            <Button onClick={onFlipY} variant="contained" className="toolbar-button" startIcon={<img src={icon_flip_y} alt={flip_y_text} className="toolbar-icon" />}>
+                {userOptions.buttonStyle === 'icon-and-text' && flip_y_text}
             </Button>
         </Tooltip>
     );

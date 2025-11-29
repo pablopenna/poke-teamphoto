@@ -33,8 +33,10 @@ function App() {
           </h1>
         </HBox>
         <VBox className="gapped align-center">
-          <HBox className="slightly-gapped">
-            <Canvas canvasRef={canvasRef} dimensions={dimensions} />
+          <HBox className="slightly-gapped flex-wrap">
+            <div className='canvas-wrapper'>
+              <Canvas canvasRef={canvasRef} dimensions={dimensions} />
+            </div>
             <CanvasToolbar canvasRef={canvasRef} />
           </HBox>
           <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />

@@ -28,7 +28,7 @@ export const BringForwards: React.FC<BringForwardsProps> = ({
 
     return (
         <Tooltip title={text}>
-            <Button onClick={onBringForward} variant="contained" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
+            <Button onClick={onBringForward} variant="contained" className="toolbar-button" startIcon={<img src={icon} alt={text} className="toolbar-icon" />}>
                 {userOptions.buttonStyle === 'icon-and-text' && text}
             </Button>
         </Tooltip>

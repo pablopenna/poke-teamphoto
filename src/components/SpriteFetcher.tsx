@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchDefaultFrontPokeSprite, fetchPokeSprite } from '../api';
+import { fetchDefaultFrontPokeSprite } from '../api';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 import { HBox } from './common/layout';

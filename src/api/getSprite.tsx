@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Crystal, Gold, Emerald, MainClient, Pokemon, PokemonSprites, RedBlue, VersionSprites, Yellow } from 'pokenode-ts';
+import { MainClient, PokemonSprites, VersionSprites } from 'pokenode-ts';
 
 const pokeApi = new MainClient();
 
@@ -27,9 +27,9 @@ export type PokemonDefaultSpriteType = keyof Omit<PokemonSprites, "other" | "ver
 
 export type PokemonSpriteVersion = keyof VersionSprites;
 
-type AllKeys<T> = T extends object
-  ? { [K in keyof T]: K | AllKeys<T[K]> }[keyof T]
-  : never;
+// type AllKeys<T> = T extends object
+//   ? { [K in keyof T]: K | AllKeys<T[K]> }[keyof T]
+//   : never;
 
 type LeafKeys<T> = T extends object
   ? {

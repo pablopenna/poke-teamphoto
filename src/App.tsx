@@ -9,11 +9,14 @@ import * as logo from './preloaded-images/pokeball_v2.png';
 import './App.css';
 import { UserOptionsProvider } from './contexts/user-options-context';
 
+const GOLDEN_RATIO = 1.61803;
+const DEFAULT_HEIGHT = 400;
+
 function App() {
   const canvasRef = useRef<fabric.Canvas | null>(null); // Create a ref for the canvas
   const [dimensions, setDimensions] = useState<Dimensions>({
-    width: 400,
-    height: 300,
+    width: DEFAULT_HEIGHT * GOLDEN_RATIO,
+    height: DEFAULT_HEIGHT,
   });
 
   useEffect(() => {

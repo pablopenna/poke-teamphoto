@@ -1,6 +1,5 @@
 import React from 'react';
 import * as fabric from 'fabric';
-import { Flexbox } from '../../common/layout';
 import { ResetSize, BringForwards, RemoveImage, Duplicate, BringBackwards, SaveAsPng, FlipImageHorizontally, FlipImageVertically, BackgroundSet, BackgroundRemove } from '.';
 import { ButtonGroup } from '@mui/material';
 

@@ -4,7 +4,7 @@ import * as fabric from 'fabric';
 import { Dimensions } from '../../types';
 import './Canvas.css';
 import charmanderPic from '../../preloaded-images/charmander.png'
-import trainerCardPic from '../../preloaded-images/trainer_card_placeholder_1.png'
+import { setupClipboardPaste } from '.';
 
 interface CanvasProps {
   canvasRef: React.RefObject<fabric.Canvas | null>;
@@ -37,9 +37,9 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
     // canvas.add(rect, text);
 
     // Sample initial images
-    fabric.FabricImage.fromURL(trainerCardPic).then((img) => {
-        canvas.add(img)
-    });
+    // fabric.FabricImage.fromURL(trainerCardPic).then((img) => {
+    //     canvas.add(img)
+    // });
 
     fabric.FabricImage.fromURL(charmanderPic).then((img) => {
       img.imageSmoothing = false;
@@ -50,7 +50,10 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
       canvas.add(img);
     });
 
+    const cleanupClipboardPasteSetup = setupClipboardPaste(canvas);
+
     return () => {
+      cleanupClipboardPasteSetup();
       canvas.dispose();
     };
   }, [canvasRef]);

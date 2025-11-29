@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchPokeSprite } from '../api';
+import { fetchDefaultFrontPokeSprite } from '../api';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 import { HBox } from './common/layout';
@@ -14,7 +14,7 @@ export const SpriteFetcher: React.FC<SpriteFetcherProps> = ({ canvasRef }) => {
   const [pokeId, setPokeId] = useState<string>();
 
   const getPokeSprite = (id: string) => {
-    fetchPokeSprite(id).then(onSpriteDataFetched);
+    fetchDefaultFrontPokeSprite(id).then(onSpriteDataFetched);
   };
 
   const onSpriteDataFetched = (sprite: string | undefined) => {

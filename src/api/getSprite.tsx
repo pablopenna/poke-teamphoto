@@ -13,7 +13,7 @@ export const fetchPokesInGen = async (generation: number) => {
   return gen.pokemon_species;
 };
 
-export const fetchPokeSprite = async (pokeId: string) => {
+export const fetchDefaultFrontPokeSprite = async (pokeId: string) => {
   let sprite;
 
   const data = await pokeApi.pokemon.getPokemonByName(pokeId);

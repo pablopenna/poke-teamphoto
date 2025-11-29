@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchDefaultFrontPokeSprite } from '../api';
+import { fetchDefaultFrontPokeSprite, fetchPokeSprite } from '../api';
 import * as fabric from 'fabric';
 import Button from '@mui/material/Button';
 import { HBox } from './common/layout';
@@ -15,6 +15,11 @@ export const SpriteFetcher: React.FC<SpriteFetcherProps> = ({ canvasRef }) => {
 
   const getPokeSprite = (id: string) => {
     fetchDefaultFrontPokeSprite(id).then(onSpriteDataFetched);
+    // fetchPokeSprite(
+    //   id,
+    //   "generation-ii",
+    //   "silver",
+    // ).then(onSpriteDataFetched);
   };
 
   const onSpriteDataFetched = (sprite: string | undefined) => {
@@ -29,6 +34,15 @@ export const SpriteFetcher: React.FC<SpriteFetcherProps> = ({ canvasRef }) => {
 
     fabric.FabricImage.fromURL(sprite).then((image) => {
       image.imageSmoothing = false; // remove anti-aliasing as it does not look good on pixelart
+      
+      // Remove white - gen 1 and 2 sprites do not have background transparency 
+      // TODO: make it toggable.
+      const filter = new fabric.filters.RemoveColor({
+        threshold: 0,
+      });
+      image.filters.push(filter);
+      image.applyFilters();
+
       canvas.add(image);
     });
   };

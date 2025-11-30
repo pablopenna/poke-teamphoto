@@ -158,7 +158,7 @@ export const AdvancedSpriteAddDialog = (props: AdvancedSpriteAddDialogProps) => 
                 </VBox>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Close</Button>
+                <Button variant="contained" onClick={handleClose}>Close</Button>
             </DialogActions>
         </Dialog>
     );

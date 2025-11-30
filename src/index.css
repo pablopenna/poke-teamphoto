@@ -15,14 +15,60 @@ body {
   font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-span {
+span,
+p {
   font-size: 16px;
+  color: white;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Override default Material UI colors */
+.MuiButton-contained {
+  /* background-color: #ff0100 !important; */
+  background-color: #db2625 !important
+}
+
+.MuiInputLabel-root {
+  color: #ffffff !important;
+}
+
+.MuiInputAdornment-root p {
+  color: #ffffff !important;
+}
+
+.MuiInputBase-input {
+  color: #ffffff !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #db2625 !important;
+}
+
+.PrivateSwitchBase-input {
+  color: #db2625 !important;
+}
+
+.MuiSvgIcon-root {
+  color: #db2625 !important;
+}
+
+.MuiDialog-paper {
+  background-color: #313f5a !important;
+}
+
+.MuiDialogTitle-root {
+  color: #ffffff !important;
+}
+
+.MuiDialogContentText-root {
+  color: #ffffff !important;
+}
+
+/* Override default Material UI colors */
 
 .App {
   text-align: center;
@@ -61,8 +107,10 @@ code {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1 1 125px; /* Grow, shrink, with minimum size */
-  min-width: 0; /* Important for flex item shrinking */
+  flex: 1 1 125px;
+  /* Grow, shrink, with minimum size */
+  min-width: 0;
+  /* Important for flex item shrinking */
 }
 
 .toolbar-icon {
@@ -71,10 +119,11 @@ code {
 }
 
 .toolbar-button {
-  flex: 1; /* Buttons grow to fill available space */
+  flex: 1;
+  /* Buttons grow to fill available space */
   min-height: 44px;
   padding: 8px 16px;
-  
+
 }
 
 /* Keep aspect ratio */

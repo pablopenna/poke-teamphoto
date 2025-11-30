@@ -7,6 +7,7 @@ import { Dimensions } from './types';
 import * as logo from './preloaded-images/pokeball_v2.png';
 import './App.css';
 import { UserOptionsProvider } from './contexts/user-options-context';
+import { Link } from '@mui/material';
 
 const GOLDEN_RATIO = 1.61803;
 const DEFAULT_HEIGHT = 400;
@@ -33,6 +34,10 @@ function App() {
             <DefaultSpriteFetcher canvasRef={canvasRef} />
             <AdvancedSpriteFetcherTrigger canvasRef={canvasRef} />
           </HBox>
+          <VBox className="slightly-gapped align-center">
+            <span>You can copy-paste trainer sprites from <Link target="_blank" href="https://play.pokemonshowdown.com/sprites/trainers/">here</Link></span>
+            <span>You can also find some backgrounds <Link target="_blank" href="https://infinitefusion.fandom.com/wiki/List_of_Trainer_Card_Backgrounds">here</Link></span>
+          </VBox>
           <HBox className="slightly-gapped flex-wrap">
             <div className='canvas-wrapper'>
               <Canvas canvasRef={canvasRef} dimensions={dimensions} />
@@ -45,7 +50,7 @@ function App() {
           </HBox>
         </VBox>
       </div>
-    </UserOptionsProvider>
+    </UserOptionsProvider >
   );
 }
 

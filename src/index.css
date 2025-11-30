@@ -56,6 +56,12 @@ code {
   color: #db2625 !important;
 }
 
+.MuiLink-root {
+  color: #d49919 !important;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .MuiDialog-paper {
   background-color: #313f5a !important;
 }

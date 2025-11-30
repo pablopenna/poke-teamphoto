@@ -1,3 +1,3 @@
 export * from './canvas';
-export * from './SpriteFetcher';
+export * from './sprites';
 export * from './common/layout';

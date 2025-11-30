@@ -46,6 +46,10 @@ code {
   color: #61dafb;
 }
 
+.default-input-height {
+  height: 56px;
+}
+
 .canvas-wrapper {
   /* overflow: scroll;
   max-width: 100vw;

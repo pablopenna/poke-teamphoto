@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as fabric from 'fabric';
 
 import { fetchAllPokes, fetchPokesInGen } from './api';
-import { HBox, SpriteFetcher, VBox, Canvas, CanvasDimensionsSelector, CanvasToolbar } from './components';
+import { HBox, DefaultSpriteFetcher, VBox, Canvas, CanvasDimensionsSelector, CanvasToolbar, AdvancedSpriteFetcherTrigger } from './components';
 import { Dimensions } from './types';
 
 import * as logo from './preloaded-images/pokeball_v2.png';
@@ -38,7 +38,8 @@ function App() {
         <VBox className="gapped align-center">
           <HBox className="slightly-gapped align-center">
             <span>Add a pokémon to the canvas:</span>
-            <SpriteFetcher canvasRef={canvasRef} />
+            <DefaultSpriteFetcher canvasRef={canvasRef} />
+            <AdvancedSpriteFetcherTrigger canvasRef={canvasRef} />
           </HBox>
           <HBox className="slightly-gapped flex-wrap">
             <div className='canvas-wrapper'>

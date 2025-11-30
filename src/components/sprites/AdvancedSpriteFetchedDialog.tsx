@@ -27,41 +27,41 @@ export const AdvancedSpriteAddDialog = (props: AdvancedSpriteAddDialogProps) => 
     const loadAvailableVersionGroups = async () => {
         if (!pokeId) return;
 
-        const versionGroups = await fetchVersionGroupNamesForPokemonSprite(pokeId);
-        setAvailableVersionGroups(versionGroups || []);
+        fetchVersionGroupNamesForPokemonSprite(pokeId)
+            .then(versionGroups => setAvailableVersionGroups(versionGroups || []))
+            .catch(e => undefined);
     }
 
     const fetchSpriteCandidates = async () => {
         if (!chosenVersionGroup || !pokeId) return;
 
-        const spriteUrls = await fetchAllSpriteUrlsForPokemonVersionGroup(pokeId, chosenVersionGroup);
-        if (!spriteUrls) return;
-
-        const sprites: string[] = [];
-
-        await Promise.all(
-            spriteUrls.map(async (url) => {
-                if (!url) return;
-                //@ts-ignore
-                const image = await getImageUrlAsBase64(url);
-                sprites.push(image);
-            })
-        );
-
-        setResults(sprites);
+        fetchAllSpriteUrlsForPokemonVersionGroup(pokeId, chosenVersionGroup)
+            .then(async (spriteUrls) => {
+                if (!spriteUrls) return;
+                const sprites: string[] = [];
+                await Promise.all(
+                    spriteUrls.map(async (url) => {
+                        if (!url) return;
+                        //@ts-ignore
+                        const image = await getImageUrlAsBase64(url);
+                        sprites.push(image);
+                    })
+                );
+                setResults(sprites);
+            }).catch(e => undefined);
     }
 
     const clearSpriteCandidates = () => setResults([]);
 
     useEffect(() => {
         loadAvailableVersionGroups();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pokeId]);
 
     useEffect(() => {
         clearSpriteCandidates();
         fetchSpriteCandidates();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pokeId, chosenVersionGroup]);
 
 
@@ -100,7 +100,7 @@ export const AdvancedSpriteAddDialog = (props: AdvancedSpriteAddDialogProps) => 
             <DialogTitle>Advanced add sprite</DialogTitle>
             <DialogContent>
                 <VBox className="gapped">
-                    <form 
+                    <form
                         // onSubmit={handleSubmit} 
                         id="advanced-add-form"
                     >
@@ -126,12 +126,12 @@ export const AdvancedSpriteAddDialog = (props: AdvancedSpriteAddDialogProps) => 
                                     <MenuItem value={vg}>{vg}</MenuItem>
                                 ))}
                             </Select>
-                            <FormControlLabel 
-                                control={<Checkbox 
+                            <FormControlLabel
+                                control={<Checkbox
                                     value={removeWhite}
                                     onChange={(event) => setRemoveWhite(event.target.checked)}
-                                />} 
-                                label="Replace white color with alpha" 
+                                />}
+                                label="Replace white color with alpha"
                             />
                         </VBox>
                     </form>
@@ -141,18 +141,18 @@ export const AdvancedSpriteAddDialog = (props: AdvancedSpriteAddDialogProps) => 
                     </DialogContentText>
                     <Flexbox className="flex-wrap align-center">
                         {results.map((sprite, idx) => (
-                            <Button 
-                                key={idx} 
+                            <Button
+                                key={idx}
                                 onClick={(_event) => {
                                     onSpriteDataFetched(sprite);
                                     handleClose();
                                 }}
                             >
-                            <img 
-                                className="result-image" 
-                                alt="pokemon" 
-                                src={sprite}
-                            />
+                                <img
+                                    className="result-image"
+                                    alt="pokemon"
+                                    src={sprite}
+                                />
                             </Button>))}
                     </Flexbox>
                 </VBox>

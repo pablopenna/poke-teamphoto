@@ -5,11 +5,11 @@ import { Flexbox } from '../common/layout';
 import { AdvancedSpriteAddDialog } from './AdvancedSpriteFetchedDialog';
 
 
-interface AdvancedSpriteFetcherTrigger {
+interface AdvancedSpriteFetcherTriggerProps {
     canvasRef: React.RefObject<fabric.Canvas | null>;
 }
 
-export const AdvancedSpriteFetcherTrigger: React.FC<AdvancedSpriteFetcherTrigger> = ({ canvasRef }) => {
+export const AdvancedSpriteFetcherTrigger: React.FC<AdvancedSpriteFetcherTriggerProps> = ({ canvasRef }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleClickOpen = () => setIsOpen(true);

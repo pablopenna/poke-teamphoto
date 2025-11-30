@@ -22,7 +22,7 @@ export const CanvasDimensionsSelector: React.FC<CanvasDimensionsSelectorProps> =
   };
 
   return (
-    <HBox className="slightly-gapped">
+    <HBox className="slightly-gapped align-center">
       <form onSubmit={handleSubmit} id="dimensions-form">
         <HBox className="slightly-gapped">
           <TextField
@@ -53,7 +53,7 @@ export const CanvasDimensionsSelector: React.FC<CanvasDimensionsSelectorProps> =
           />
         </HBox>
       </form>
-      <Button type="submit" form="dimensions-form">
+      <Button variant="contained" type="submit" form="dimensions-form" className='default-input-height'>
         Apply
       </Button>
     </HBox>

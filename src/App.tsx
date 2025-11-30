@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import * as fabric from 'fabric';
 
 import { HBox, DefaultSpriteFetcher, VBox, Canvas, CanvasDimensionsSelector, CanvasToolbar, AdvancedSpriteFetcherTrigger } from './components';

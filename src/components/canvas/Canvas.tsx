@@ -44,8 +44,8 @@ export const Canvas: React.FC<CanvasProps> = ({ canvasRef, dimensions }) => {
     fabric.FabricImage.fromURL(charmanderPic).then((img) => {
       img.imageSmoothing = false;
       img.set({
-        left: 10,
-        top: 100,
+        left: canvas.width / 2 - (img.getBoundingRect().width / 2),
+        top: canvas.height / 2 - (img.getBoundingRect().height / 2),
       });
       canvas.add(img);
     });

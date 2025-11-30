@@ -1,6 +1,6 @@
 import React from 'react';
 import * as fabric from 'fabric';
-import { ResetSize, BringForwards, RemoveImage, Duplicate, BringBackwards, SaveAsPng, FlipImageHorizontally, FlipImageVertically, BackgroundSet, BackgroundRemove } from '.';
+import { ResetSize, BringForwards, RemoveImage, Duplicate, BringBackwards, SaveAsPng, FlipImageHorizontally, FlipImageVertically, BackgroundSet, BackgroundRemove, BackgroundAdjustTo } from '.';
 import { ButtonGroup } from '@mui/material';
 
 interface CanvasToolbarProps {
@@ -18,6 +18,7 @@ export const CanvasToolbar: React.FC<CanvasToolbarProps> = ({
       </ButtonGroup>
       <ButtonGroup variant="contained">
         <BackgroundSet canvasRef={canvasRef} />
+        <BackgroundAdjustTo canvasRef={canvasRef} />
         <BackgroundRemove canvasRef={canvasRef} />
       </ButtonGroup>
       <ButtonGroup variant="contained">

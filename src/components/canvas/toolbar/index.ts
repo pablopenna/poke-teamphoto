@@ -1,3 +1,4 @@
+export * from './BackgroundAdjustTo';
 export * from './BackgroundRemove';
 export * from './BackgroundSet';
 export * from './BringBackward';

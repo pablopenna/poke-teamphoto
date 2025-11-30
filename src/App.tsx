@@ -36,14 +36,20 @@ function App() {
           </h1>
         </HBox>
         <VBox className="gapped align-center">
+          <HBox className="slightly-gapped align-center">
+            <span>Add a pokémon to the canvas:</span>
+            <SpriteFetcher canvasRef={canvasRef} />
+          </HBox>
           <HBox className="slightly-gapped flex-wrap">
             <div className='canvas-wrapper'>
               <Canvas canvasRef={canvasRef} dimensions={dimensions} />
             </div>
             <CanvasToolbar canvasRef={canvasRef} />
           </HBox>
-          <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
-          <SpriteFetcher canvasRef={canvasRef} />
+          <HBox className="slightly-gapped align-center">
+            <span>Set canvas size manually:</span>
+            <CanvasDimensionsSelector dimensions={dimensions} setDimensions={setDimensions} />
+          </HBox>
         </VBox>
       </div>
     </UserOptionsProvider>

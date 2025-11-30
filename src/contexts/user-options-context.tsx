@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { UserOptions } from '@/types/user-options.type';
+import { UserOptions } from '../types';
 
 const LOCAL_STORAGE_KEY = "user-options";
 

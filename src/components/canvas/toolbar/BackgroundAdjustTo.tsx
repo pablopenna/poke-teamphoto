@@ -29,8 +29,8 @@ export const BackgroundAdjustTo: React.FC<ManageBackgroundProps> = ({
         });
         
         const dimensions = {
-            width: background.width,
-            height: background.height,
+            width: background.width * background.scaleX,
+            height: background.height * background.scaleY,
         };
 
         canvas.setDimensions(dimensions);

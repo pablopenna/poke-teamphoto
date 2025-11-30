@@ -77,6 +77,12 @@ code {
   
 }
 
+/* Keep aspect ratio */
+.result-image {
+  height: 100%;
+  width: auto;
+}
+
 .flexbox {
   display: flex;
 }

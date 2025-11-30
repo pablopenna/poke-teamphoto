@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as fabric from 'fabric';
 
-import { fetchAllPokes, fetchPokesInGen } from './api';
 import { HBox, DefaultSpriteFetcher, VBox, Canvas, CanvasDimensionsSelector, CanvasToolbar, AdvancedSpriteFetcherTrigger } from './components';
 import { Dimensions } from './types';
 
@@ -18,13 +17,6 @@ function App() {
     width: DEFAULT_HEIGHT * GOLDEN_RATIO,
     height: DEFAULT_HEIGHT,
   });
-
-  useEffect(() => {
-    fetchAllPokes().then((data) => console.log(data));
-    fetchPokesInGen(1).then((data) => console.log(data));
-    fetchPokesInGen(2).then((data) => console.log(data));
-    fetchPokesInGen(3).then((data) => console.log(data));
-  }, []);
 
   return (
     <UserOptionsProvider>
